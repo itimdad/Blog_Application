@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SparrowKnight Blog App</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1">
+    <div class="container">
+        <a class="navbar-brand small fw-semibold" href="#">SparrowKnight Blog App</a>
+
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link small" href="#">All Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small" href="/login">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container mt-3">
+    <div class="row">
+
+        <!-- BLOG POSTS -->
+        <div class="col-md-8">
+
+            <div class="card mb-2">
+                <div class="card-body py-2">
+                    <h6 class="text-primary mb-1">What is Java</h6>
+                    <small class="text-muted">02 May 2023</small>
+                    <p class="small mb-1">
+                        Java is a programming language
+                        <a href="#" class="text-decoration-none">Read more</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-2">
+                <div class="card-body py-2">
+                    <h6 class="text-primary mb-1">What is Spring Boot</h6>
+                    <small class="text-muted">02 May 2023</small>
+                    <p class="small mb-1">
+                        SpringBoot is an approach to develop Spring Based Applications
+                        <a href="#" class="text-decoration-none">Read more</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-2">
+                <div class="card-body py-2">
+                    <h6 class="text-primary mb-1">What is Angular ?</h6>
+                    <small class="text-muted">02 May 2023</small>
+                    <p class="small mb-1">
+                        A framework to develop Single Page Applications
+                        <a href="#" class="text-decoration-none">Read more</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEARCH -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header py-1 small fw-semibold">
+                    Blog Search
+                </div>
+                <div class="card-body p-2">
+                    <input type="text" class="form-control form-control-sm mb-2"
+                           placeholder="Search blog">
+                    <button class="btn btn-primary btn-sm w-100">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-1 mt-3 small">
+    Copyright © 2023
+    <a href="#" class="text-info text-decoration-none">Ashok IT</a>
+    All rights reserved.
+</footer>
+
+</body>
+</html>

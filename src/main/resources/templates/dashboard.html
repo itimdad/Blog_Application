@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Blog Posts</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1">
+    <div class="container">
+        <a class="navbar-brand small fw-semibold" href="#">SparrowKnight Blog App</a>
+
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link small" href="#">Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small" href="#">New Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small" href="#">Comments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small" href="/">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container mt-3">
+
+    <h5 class="mb-2 fw-semibold">List Blog Posts</h5>
+
+    <!-- Search -->
+    <div class="row mb-2">
+        <div class="col-md-4">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control" placeholder="Search">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-sm align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th style="width:5%">#</th>
+                    <th>Post Title</th>
+                    <th>Post Short Description</th>
+                    <th style="width:15%">Post Created On</th>
+                    <th style="width:15%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>What is Java</td>
+                    <td>Java is a programming language</td>
+                    <td>02 May 2023</td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>What is Spring Boot</td>
+                    <td>SpringBoot is an approach to develop Spring Based Applications</td>
+                    <td>02 May 2023</td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>What is Angular ?</td>
+                    <td>A framework to develop Single Page Applications</td>
+                    <td>02 May 2023</td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

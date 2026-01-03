@@ -2,10 +2,8 @@ package com.imdad.entity;
 
 import java.time.LocalDate;
 
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.data.annotation.CreatedDate;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,6 +33,6 @@ public class CommentEntity {
 	private LocalDate createdDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "post_id")
 	private PostEntity postEntity;
 }
