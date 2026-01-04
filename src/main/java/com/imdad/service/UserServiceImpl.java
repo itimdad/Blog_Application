@@ -9,11 +9,16 @@ import com.imdad.binding.SignUpForm;
 import com.imdad.entity.UserEntity;
 import com.imdad.repository.UserRepo;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class UserServiceImpl  implements UserService{
 	
 	@Autowired
 	UserRepo userRepo;
+	
+	@Autowired
+	HttpSession httpSession;
 
 	@Override
 	public boolean signup(SignUpForm form) {
@@ -48,6 +53,8 @@ public class UserServiceImpl  implements UserService{
 		if(!userEntity.getPwd().equals(form.getPwd())) {
 			return "Incorrect Password";
 		}
+		
+		httpSession.setAttribute("userEntity", userEntity);
 		
 		
 		return "success";

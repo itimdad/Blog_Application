@@ -11,18 +11,17 @@ import com.imdad.binding.LoginForm;
 import com.imdad.binding.SignUpForm;
 import com.imdad.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	HttpSession httpSession;
 
-
-	@GetMapping("/")
-	public String loadIndexPage() {
-		
-		return "index";
-	}
 	
 	@GetMapping("/register")
 	public String loadRegisterPage(Model model) {
@@ -63,6 +62,7 @@ public class UserController {
 		String msg = userService.login(form);
 		
 		if(msg.equals("success")) {
+						
 			return "redirect:/dashboard";	
 		} 
 		else {
@@ -71,13 +71,15 @@ public class UserController {
 		}
 		
 		
-		System.out.println(form);
+		
 		
 		return "login";
 	}
 	
-	@GetMapping("/dashboard")
-	public String loadDashboardPage() {
-		return "dashboard";
+	@GetMapping("/logout")
+	public String logout() {
+		
+		httpSession.invalidate();
+		return "index";
 	}
 }

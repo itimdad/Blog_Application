@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Details</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1">
+    <div class="container">
+        <a class="navbar-brand small fw-semibold" href="/">SparrowKnight Blog App</a>
+
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link small" href="/">All Posts</a></li>
+            <li class="nav-item"><a class="nav-link small" href="/register">Register</a></li>
+            <li class="nav-item"><a class="nav-link small" href="/login">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container mt-3">
+    <div class="row">
+
+        <!-- BLOG CONTENT -->
+        <div class="col-md-8">
+
+            <h4 class="fw-semibold" th:text="${post.title}"></h4>
+            <p class="text-muted small" th:text="${post.description}">
+            </p>
+
+            <hr>
+
+            <div th:utext="${post.content}">
+                <!-- Blog HTML content -->
+            </div>
+
+            <hr class="my-4">
+
+            <!-- COMMENTS LIST -->
+            <h6 class="fw-semibold">Comments:</h6>
+
+            <div th:each="c : ${comments}" class="mb-3">
+                <p class="mb-1">
+                    <strong>Name:</strong>
+                    <span th:text="${c.name}"></span>
+                </p>
+                <p class="mb-1">
+                    <strong>Date:</strong>
+                    <span th:text="${c.createdDate}"></span>
+                </p>
+                <p class="small text-muted" th:text="${c.content}">
+                    Nice Blog. Keep writing
+                </p>
+            </div>
+
+            <hr class="my-4">
+
+            <!-- COMMENT FORM -->
+            <div class="card">
+                <div class="card-header fw-semibold">
+                    Leave a comment
+                </div>
+
+                <div class="card-body">
+                <p th:text="${successMsg}" class="text-success" />
+                <p th:text="${errMsg}" class="text-success" />
+                    <form th:action="@{/comment}" th:object="${comment}" method="post">
+
+                        <!-- Hidden Post Id -->
+                        <input type="hidden" th:field="*{postId}">
+
+                        <div class="mb-2">
+                            <input type="text"
+                                   class="form-control form-control-sm"
+                                   th:field="*{name}"
+                                   placeholder="Enter name">
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="email"
+                                   class="form-control form-control-sm"
+                                   th:field="*{email}"
+                                   placeholder="Enter email">
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea class="form-control form-control-sm"
+                                      th:field="*{content}"
+                                      rows="4"
+                                      placeholder="Enter comment"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            Submit
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-1 mt-4 small">
+    Copyright © 2023
+    <a href="#" class="text-info text-decoration-none">SparrowKnight</a>
+    All rights reserved.
+</footer>
+
+</body>
+</html>
