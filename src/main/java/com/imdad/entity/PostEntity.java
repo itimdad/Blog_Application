@@ -1,12 +1,16 @@
 package com.imdad.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,6 +25,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "POST_TBL")
 public class PostEntity {
 
@@ -29,7 +34,8 @@ public class PostEntity {
 	private Integer postId;
 	
 	@CreatedDate
-	private LocalDate createdDate;
+	@Column(nullable = false, updatable = false)
+	private LocalDateTime createdDate;
 	private String title;
 	private String description;
 	

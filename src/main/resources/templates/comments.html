@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1">
+    <div class="container">
+        <a class="navbar-brand small fw-semibold" href="/">Ashok IT Blog App</a>
+
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link small" href="/dashboard">Posts</a></li>
+            <li class="nav-item"><a class="nav-link small" href="/post">New Post</a></li>
+            <li class="nav-item"><a class="nav-link small active" href="/comments">Comments</a></li>
+            <li class="nav-item"><a class="nav-link small" href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container mt-4">
+
+    <h4 class="fw-semibold mb-3">List of Comments</h4>
+
+    <table class="table table-bordered table-sm align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Comment</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="c, stat : ${comments}">
+            <td th:text="${stat.count}">1</td>
+
+            <td th:text="${c.email}"></td>
+
+            <td th:text="${c.content}">
+                
+            </td>
+
+            <td th:text="${#temporals.format(c.createdDate, 'dd MMM yyyy')}">
+            </td>
+
+            <td>
+                <a th:href="@{/comment/delete/{id}(id=${c.commentId})}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+            </td>
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(comments)}">
+            <td colspan="5" class="text-center text-muted">
+                No comments found
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-1 mt-5 small">
+    Copyright © 2023
+    <span class="text-info">Ashok IT</span>
+    All rights reserved.
+</footer>
+
+</body>
+</html>

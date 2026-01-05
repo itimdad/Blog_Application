@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.imdad.binding.CommentForm;
 import com.imdad.binding.CreatePostForm;
+import com.imdad.entity.CommentEntity;
 import com.imdad.entity.PostEntity;
 import com.imdad.entity.UserEntity;
+import com.imdad.repository.CommentRepo;
 import com.imdad.repository.PostRepo;
 import com.imdad.repository.UserRepo;
 import jakarta.servlet.http.HttpSession;
@@ -17,17 +19,17 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class BlogServiceImpl implements BlogService{
 
-    private final UserRepo userRepo;
 	
 	@Autowired
 	PostRepo postRepo;
 	
 	@Autowired
 	HttpSession httpSession;
+	
+	@Autowired
+	CommentRepo commentRepo;
 
-    BlogServiceImpl(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
+
 
 	@Override
 	public boolean createBlogPost(CreatePostForm form) {
@@ -46,11 +48,7 @@ public class BlogServiceImpl implements BlogService{
 		return true;
 	}
 
-	@Override
-	public boolean commentOnPost(CommentForm form) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 	@Override
 	public PostEntity getPost() {
@@ -64,9 +62,20 @@ public class BlogServiceImpl implements BlogService{
 		
 		List<PostEntity> posts = postRepo.findByUserEntityOrderByPostIdDesc(entity);
 		
-		
-		
 		return posts;
+	}
+
+
+
+	@Override
+	public List<CommentEntity> getAllComment() {
+		// TODO Auto-generated method stub
+		
+		UserEntity userEntity= (UserEntity) httpSession.getAttribute("userEntity");
+		
+		List<CommentEntity> comments = commentRepo.findByPostEntity_UserEntity_UserId(userEntity.getUserId());
+		
+		return comments;
 	}
 
 }

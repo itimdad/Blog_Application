@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - Blog Posts</title>
@@ -22,7 +22,7 @@
                 <a class="nav-link small" href="/post">New Post</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link small" href="#">Comments</a>
+                <a class="nav-link small" href="/comments">Comments</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link small" href="/logout">Logout</a>
@@ -51,7 +51,7 @@
         <table class="table table-bordered table-striped table-sm align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th style="width:5%">#</th>
+                    <th style="width:5%">S.No.</th>
                     <th>Post Title</th>
                     <th>Post Short Description</th>
                     <th style="width:15%">Post Created On</th>
@@ -59,38 +59,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>What is Java</td>
-                    <td>Java is a programming language</td>
-                    <td>02 May 2023</td>
+                <tr th:each="post, stat: ${posts}">
+                    <td th:text="${stat.count}">1</td>
+                    <td th:text="${post.title}" />
+                    <td th:text="${post.description}" />
+                    <td th:text="${#temporals.format(post.createdDate, 'dd MMM yyyy')}" />
                     <td>
                         <a href="#" class="btn btn-primary btn-sm">Edit</a>
                         <a href="#" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td>What is Spring Boot</td>
-                    <td>SpringBoot is an approach to develop Spring Based Applications</td>
-                    <td>02 May 2023</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>What is Angular ?</td>
-                    <td>A framework to develop Single Page Applications</td>
-                    <td>02 May 2023</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

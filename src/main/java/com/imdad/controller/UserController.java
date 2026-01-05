@@ -71,15 +71,13 @@ public class UserController {
 		}
 		
 		
-		
-		
 		return "login";
 	}
 	
 	@GetMapping("/logout")
-	public String logout() {
+	public String logout( Model model) {
 		
 		httpSession.invalidate();
-		return "index";
+		return "redirect:/";
 	}
 }

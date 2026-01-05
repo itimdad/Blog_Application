@@ -51,7 +51,7 @@
                 </p>
                 <p class="mb-1">
                     <strong>Date:</strong>
-                    <span th:text="${c.createdDate}"></span>
+                    <span th:text="${#temporals.format(c.createdDate, 'dd MMM yyyy')}"></span>
                 </p>
                 <p class="small text-muted" th:text="${c.content}">
                     Nice Blog. Keep writing

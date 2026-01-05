@@ -1,10 +1,13 @@
 package com.imdad.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,6 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "COMMENT_TBL")
 public class CommentEntity {
 
@@ -30,7 +34,8 @@ public class CommentEntity {
 	private String content;
 	
 	@CreatedDate
-	private LocalDate createdDate;
+	@Column(nullable = false, updatable = false)
+	private LocalDateTime createdDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "post_id")

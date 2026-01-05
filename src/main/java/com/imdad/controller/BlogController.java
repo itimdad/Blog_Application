@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.imdad.binding.CreatePostForm;
+import com.imdad.entity.CommentEntity;
 import com.imdad.entity.PostEntity;
 import com.imdad.entity.UserEntity;
 import com.imdad.service.BlogService;
@@ -33,7 +34,7 @@ public class BlogController {
 		
 		List<PostEntity> dashboardData = blogService.getDashboardData(userEntity);
 		
-		model.addAttribute("", dashboardData);
+		model.addAttribute("posts", dashboardData);
 		
 		return "dashboard";
 	}
@@ -58,5 +59,15 @@ public class BlogController {
 		}
 		
 		return "createBlog";
+	}
+	
+	@GetMapping("/comments")
+	public String getAllCommentsForUser(Model model) {
+		
+		List<CommentEntity> comments = blogService.getAllComment();
+
+		model.addAttribute("comments", comments);
+		
+		return "comments";
 	}
 }

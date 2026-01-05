@@ -43,7 +43,7 @@
 
                     <!-- Date -->
                     <small class="text-muted d-block mb-1"
-                           th:text="${post.createdDate}">
+                           th:text="${#temporals.format(post.createdDate, 'dd MMM yyyy')}">
                     </small>
 
                     <!-- Short Description -->
