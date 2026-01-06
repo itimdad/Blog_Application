@@ -1,9 +1,10 @@
 package com.imdad.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -26,6 +27,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @EntityListeners(AuditingEntityListener.class)
+@SQLDelete(sql = "UPDATE POST_TBL SET is_Deleted = true WHERE post_id = ?")
+@Where(clause = "is_deleted = false")
 @Table(name = "POST_TBL")
 public class PostEntity {
 
@@ -34,10 +37,12 @@ public class PostEntity {
 	private Integer postId;
 	
 	@CreatedDate
-	@Column(nullable = false, updatable = false)
+	@Column( updatable = false)
 	private LocalDateTime createdDate;
 	private String title;
 	private String description;
+	
+	private boolean isDeleted = false;
 	
 	@Lob
 	private String content;

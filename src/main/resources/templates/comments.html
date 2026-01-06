@@ -12,7 +12,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1">
     <div class="container">
-        <a class="navbar-brand small fw-semibold" href="/">Ashok IT Blog App</a>
+        <a class="navbar-brand small fw-semibold" href="/">SparrowKnight Blog App</a>
 
         <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link small" href="/dashboard">Posts</a></li>
@@ -27,11 +27,12 @@
 <div class="container mt-4">
 
     <h4 class="fw-semibold mb-3">List of Comments</h4>
-
+    <p th:text="${successMsg}" class="text-success" />
+    <p th:text="${errMsg}" class="text-danger" />
     <table class="table table-bordered table-sm align-middle">
         <thead class="table-dark">
         <tr>
-            <th>#</th>
+            <th>S NO</th>
             <th>Email</th>
             <th>Comment</th>
             <th>Created Date</th>
@@ -53,7 +54,7 @@
             </td>
 
             <td>
-                <a th:href="@{/comment/delete/{id}(id=${c.commentId})}"
+                <a th:href="@{/deleteComment/{id}(id=${c.commentId})}"
                    class="btn btn-danger btn-sm">
                     Delete
                 </a>
@@ -73,7 +74,7 @@
 <!-- FOOTER -->
 <footer class="bg-dark text-white text-center py-1 mt-5 small">
     Copyright © 2023
-    <span class="text-info">Ashok IT</span>
+    <span class="text-info">SparrowKnight</span>
     All rights reserved.
 </footer>
 

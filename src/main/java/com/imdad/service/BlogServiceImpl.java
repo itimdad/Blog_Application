@@ -49,13 +49,6 @@ public class BlogServiceImpl implements BlogService{
 	}
 
 
-
-	@Override
-	public PostEntity getPost() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public List<PostEntity> getDashboardData(UserEntity entity) {
 		// TODO Auto-generated method stub
@@ -76,6 +69,32 @@ public class BlogServiceImpl implements BlogService{
 		List<CommentEntity> comments = commentRepo.findByPostEntity_UserEntity_UserId(userEntity.getUserId());
 		
 		return comments;
+	}
+
+
+	@Override
+	public boolean deleteComments(Integer commentId) {
+		
+		if(commentId == null) {
+			return false;
+		}
+		
+		commentRepo.deleteById(commentId);
+
+		return true;
+	}
+
+
+	@Override
+	public CreatePostForm getPostForEdit(Integer postId) {
+		// TODO Auto-generated method stub
+		PostEntity postEntity = postRepo.findById(postId).get();
+		
+		CreatePostForm form = new CreatePostForm();
+		
+		BeanUtils.copyProperties(postEntity, form);
+		
+		return form;
 	}
 
 }

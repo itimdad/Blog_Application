@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.imdad.binding.CreatePostForm;
 import com.imdad.entity.CommentEntity;
@@ -69,5 +71,33 @@ public class BlogController {
 		model.addAttribute("comments", comments);
 		
 		return "comments";
+	}
+	
+	@GetMapping("/deleteComment/{commentId}")
+	public String deleteComment(@PathVariable Integer commentId, 
+			RedirectAttributes model
+			) {
+		
+		boolean status = blogService.deleteComments(commentId);
+		
+		if(status) {
+			model.addAttribute("successMsg", "Deleted successFully");
+		}
+		else {
+			model.addAttribute("errMsg", "Something wrong");
+		}
+		
+		return "redirect:/comments";
+	}
+	
+	@GetMapping("/editPost/{postId}")
+	public String updatePost(@PathVariable Integer postId, Model model) {
+		
+		CreatePostForm postForm = blogService.getPostForEdit(postId);
+		
+		model.addAttribute("postForm", postForm);
+		
+		return "createBlog";
+		
 	}
 }

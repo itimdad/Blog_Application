@@ -2,6 +2,8 @@ package com.imdad.entity;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -22,6 +24,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
+@SQLDelete(sql = "UPDATE comment_tbl SET is_deleted = true WHERE comment_id = ?")
+@Where(clause = "is_deleted = false")
 @Table(name = "COMMENT_TBL")
 public class CommentEntity {
 
@@ -34,8 +38,10 @@ public class CommentEntity {
 	private String content;
 	
 	@CreatedDate
-	@Column(nullable = false, updatable = false)
+	@Column( updatable = false)
 	private LocalDateTime createdDate;
+	
+	private boolean isDeleted = false;
 	
 	@ManyToOne
 	@JoinColumn(name = "post_id")

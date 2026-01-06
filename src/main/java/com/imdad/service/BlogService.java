@@ -14,7 +14,9 @@ public interface BlogService {
 	
 	public List<CommentEntity> getAllComment();
 	
-	public PostEntity getPost();
+	public boolean deleteComments(Integer commentId);
 	
 	public List<PostEntity> getDashboardData(UserEntity entity);
+	
+	public CreatePostForm getPostForEdit(Integer postId);
 }

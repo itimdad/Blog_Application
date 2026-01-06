@@ -65,8 +65,10 @@
                     <td th:text="${post.description}" />
                     <td th:text="${#temporals.format(post.createdDate, 'dd MMM yyyy')}" />
                     <td>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                        <a th:href="@{/editPost/{id}(id=${post.postId})}" class="btn btn-primary btn-sm">Edit</a>
                         <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                        
+
                     </td>
                 </tr>
 
