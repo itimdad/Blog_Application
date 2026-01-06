@@ -42,6 +42,7 @@ public class PostEntity {
 	private String title;
 	private String description;
 	
+	@Column(name = "is_deleted")
 	private boolean isDeleted = false;
 	
 	@Lob

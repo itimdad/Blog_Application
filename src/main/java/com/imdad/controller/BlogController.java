@@ -32,13 +32,17 @@ public class BlogController {
 	@GetMapping("/dashboard")
 	public String loadDashboardPage(Model model) {
 		
+		init(model);
+		
+		return "dashboard";
+	}
+
+	private void init(Model model) {
 		UserEntity userEntity = (UserEntity)httpSession.getAttribute("userEntity");
 		
 		List<PostEntity> dashboardData = blogService.getDashboardData(userEntity);
 		
 		model.addAttribute("posts", dashboardData);
-		
-		return "dashboard";
 	}
 
 	@GetMapping("/post")
@@ -99,5 +103,22 @@ public class BlogController {
 		
 		return "createBlog";
 		
+	}
+	
+	@GetMapping("/deletePost/{postId}")
+	public String deletePost(@PathVariable Integer postId, Model model) {
+		
+		boolean status = blogService.deletePostById(postId);
+		
+		if(status) {
+			model.addAttribute("successMsg", "Post deleted");
+		}
+		else {
+			model.addAttribute("errMsg", "Something is wrong");
+		}
+		
+		init(model);
+		
+		return "dashboard";
 	}
 }

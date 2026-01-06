@@ -19,4 +19,6 @@ public interface BlogService {
 	public List<PostEntity> getDashboardData(UserEntity entity);
 	
 	public CreatePostForm getPostForEdit(Integer postId);
+	
+	public boolean deletePostById(Integer postId);
 }

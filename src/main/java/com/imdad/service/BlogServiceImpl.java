@@ -97,4 +97,13 @@ public class BlogServiceImpl implements BlogService{
 		return form;
 	}
 
+
+	@Override
+	public boolean deletePostById(Integer postId) {
+
+		postRepo.deleteById(postId);
+		
+		return true;
+	}
+
 }

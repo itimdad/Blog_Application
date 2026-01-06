@@ -66,7 +66,7 @@
                     <td th:text="${#temporals.format(post.createdDate, 'dd MMM yyyy')}" />
                     <td>
                         <a th:href="@{/editPost/{id}(id=${post.postId})}" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                        <a th:href="@{/deletePost/{id}(id=${post.postId})}" class="btn btn-danger btn-sm">Delete</a>
                         
 
                     </td>

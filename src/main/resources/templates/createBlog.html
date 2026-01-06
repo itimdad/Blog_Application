@@ -41,7 +41,9 @@
                 <p th:text="${errMsg}" class="text-success" />
 
                     <form th:action="@{/post}" th:object="${postForm}" method="post">
-
+                    
+                       <input type="hidden" th:field="*{postId}">
+                    
                         <!-- Title -->
                         <div class="mb-3">
                             <label class="form-label small">Title</label>
