@@ -69,6 +69,12 @@ public class IndexServiceImpl implements IndexService{
 		return comments;
 	}
 
+	@Override
+	public List<PostEntity> getFilteredBlogs(String content) {
+		// TODO Auto-generated method stub
+		return postRepo.getPostOnMatchContent(content);
+	}
+
 
 
 }

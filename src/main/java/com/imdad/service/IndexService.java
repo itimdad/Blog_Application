@@ -15,5 +15,8 @@ public interface IndexService {
 	public boolean doCommentOnPost(CommentForm form);
 	
 	public List<CommentEntity> getComments(Integer postId);
+	
+	public List<PostEntity> getFilteredBlogs(String content);
+	
 
 }

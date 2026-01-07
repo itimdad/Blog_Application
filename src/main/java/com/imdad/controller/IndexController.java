@@ -54,6 +54,18 @@ public class IndexController {
 
 		indexService.doCommentOnPost(form);
 
-		return "redirect:/post/" + form.getPostId();	}
+		return "redirect:/post/" + form.getPostId();	
+	
+	}
+	
+	@GetMapping("/filter-posts")
+	public String getFilteredPost(@RequestParam String scontent, Model model) {
+		
+		List<PostEntity> filteredBlogs = indexService.getFilteredBlogs(scontent);
+		
+		model.addAttribute("posts", filteredBlogs);
+		
+		return "filtered-posts";
+	}
 
 }
