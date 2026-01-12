@@ -32,7 +32,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/register")
-	public String registerUser(@ModelAttribute("signupForm") SignUpForm form, Model model) {
+	public String registerUser(@ModelAttribute("signupForm") SignUpForm form, Model model) throws Exception {
 		
 		boolean status = userService.signup(form);
 		
@@ -44,7 +44,6 @@ public class UserController {
 		}
 		
 		model.addAttribute("signupForm", new SignUpForm());
-		System.out.println(form);
 		return "register";
 	}
 	
@@ -57,7 +56,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String loginUser(LoginForm form, Model model) {
+	public String loginUser(LoginForm form, Model model) throws Exception {
 		
 		String msg = userService.login(form);
 		

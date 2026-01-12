@@ -5,8 +5,8 @@ import com.imdad.binding.SignUpForm;
 
 public interface UserService {
 	
-	public boolean signup(SignUpForm form);
+	public boolean signup(SignUpForm form) throws Exception;
 	
-	public String login(LoginForm form);
+	public String login(LoginForm form) throws Exception;
 
 }
